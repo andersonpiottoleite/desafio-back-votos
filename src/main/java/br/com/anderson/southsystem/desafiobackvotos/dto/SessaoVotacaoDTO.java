@@ -2,12 +2,13 @@ package br.com.anderson.southsystem.desafiobackvotos.dto;
 
 import java.time.LocalDateTime;
 
-import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
+import javax.validation.constraints.NotNull;
 
 public class SessaoVotacaoDTO {
 
 	private LocalDateTime dataEncerramento;
 	
+	@NotNull(message = "O id da Pauta é obrigatório!")
 	private Long idPauta;
 
 	public SessaoVotacaoDTO(Long idPauta, LocalDateTime dataEncerramento) {
@@ -29,10 +30,5 @@ public class SessaoVotacaoDTO {
 
 	public void setIdPauta(Long idPauta) {
 		this.idPauta = idPauta;
-	}
-
-	public SessaoVotacao convertoToSessaoVotacao() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

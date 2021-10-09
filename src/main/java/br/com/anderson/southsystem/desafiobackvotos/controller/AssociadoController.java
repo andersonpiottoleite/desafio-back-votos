@@ -2,6 +2,8 @@ package br.com.anderson.southsystem.desafiobackvotos.controller;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +37,7 @@ public class AssociadoController {
 	
 	@ApiOperation("Salva um novo associado")
 	@PostMapping("/salvar")
-	public ResponseEntity<AssociadoVO> salvar(@RequestBody AssociadoDTO associadoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
+	public ResponseEntity<AssociadoVO> salvar(@RequestBody @Valid AssociadoDTO associadoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		Associado associado = associadoService.salvar(associadoDTO);
 		URI uri = uriBuilder.path("/associado/{idAssociado}").buildAndExpand(associado.getId()).toUri();
         return ResponseEntity.created(uri).body(new AssociadoVO(associado));

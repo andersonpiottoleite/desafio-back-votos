@@ -6,7 +6,7 @@ import java.util.Objects;
 import br.com.anderson.southsystem.desafiobackvotos.dto.SessaoVotacaoDTO;
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;
 
-public class SessaoVotacaoValidation {
+public class SessaoVotacaoBusinessValidation {
 	
 	public static void valida(SessaoVotacaoDTO sessaoVotacaoDTO) throws DesafioBackVotosException {
 		if(Objects.nonNull(sessaoVotacaoDTO.getDataEncerramento())

@@ -1,9 +1,13 @@
 package br.com.anderson.southsystem.desafiobackvotos.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class AssociadoDTO {
 	
+	@NotEmpty(message = "O nome do associado é obrigatório!")
 	private String nome;
 	
+	@NotEmpty(message = "O cpf do associado é obrigatório!")
 	private String cpf;
 
 	public AssociadoDTO(String nome, String cpf) {

@@ -1,8 +1,8 @@
-package br.com.anderson.southsystem.desafiobackvotos.dto;
+package br.com.anderson.southsystem.desafiobackvotos.vo;
 
 import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
 
-public class ResultadoVotosDTO {
+public class ResultadoVotosVO {
 
 	private Long idPauta;
 
@@ -12,10 +12,10 @@ public class ResultadoVotosDTO {
 
 	private Long quantidadeVotosContra;
 
-	public ResultadoVotosDTO() {
+	public ResultadoVotosVO() {
 	}
 
-	public ResultadoVotosDTO(Pauta pauta) {
+	public ResultadoVotosVO(Pauta pauta) {
 		this.idPauta = pauta.getId();
 		this.quantidadeTotalVotos = pauta.getVotos().stream().count();
 		this.quantidadeVotosAFavor = pauta.getVotos().stream().filter(v -> v.isVotoAFavor()).count();
@@ -26,32 +26,16 @@ public class ResultadoVotosDTO {
 		return idPauta;
 	}
 
-	public void setIdPauta(Long idPauta) {
-		this.idPauta = idPauta;
-	}
-
 	public Long getQuantidadeTotalVotos() {
 		return quantidadeTotalVotos;
-	}
-
-	public void setQuantidadeTotalVotos(Long quantidadeTotalVotos) {
-		this.quantidadeTotalVotos = quantidadeTotalVotos;
 	}
 
 	public Long getQuantidadeVotosAFavor() {
 		return quantidadeVotosAFavor;
 	}
 
-	public void setQuantidadeVotosAFavor(Long quantidadeVotosAFavor) {
-		this.quantidadeVotosAFavor = quantidadeVotosAFavor;
-	}
-
 	public Long getQuantidadeVotosContra() {
 		return quantidadeVotosContra;
-	}
-
-	public void setQuantidadeVotosContra(Long quantidadeVotosContra) {
-		this.quantidadeVotosContra = quantidadeVotosContra;
 	}
 
 }

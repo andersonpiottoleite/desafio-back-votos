@@ -2,6 +2,8 @@ package br.com.anderson.southsystem.desafiobackvotos.controller;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.anderson.southsystem.desafiobackvotos.dto.PautaDTO;
-import br.com.anderson.southsystem.desafiobackvotos.dto.ResultadoVotosDTO;
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;
 import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
 import br.com.anderson.southsystem.desafiobackvotos.service.PautaServiceImpl;
 import br.com.anderson.southsystem.desafiobackvotos.vo.PautaVO;
+import br.com.anderson.southsystem.desafiobackvotos.vo.ResultadoVotosVO;
 import io.swagger.annotations.ApiOperation;
 
 /** Classe que representa um controller para tratar informações de <code>Pauta</code>
@@ -36,7 +38,7 @@ public class PautaController {
 	
 	@ApiOperation("Salva uma nova pauta")
 	@PostMapping("/salvar")
-	public ResponseEntity<PautaVO> salvar(@RequestBody PautaDTO pautaDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
+	public ResponseEntity<PautaVO> salvar(@RequestBody @Valid PautaDTO pautaDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		Pauta pauta = pautaService.salvar(pautaDTO);
 		URI uri = uriBuilder.path("/pauta/{idPauta}").buildAndExpand(pauta.getId()).toUri();
         return ResponseEntity.created(uri).body(new PautaVO(pauta));
@@ -51,8 +53,8 @@ public class PautaController {
 	
 	@ApiOperation("Contabilizar os votos de uma pauta")
 	@GetMapping("/contabilizar-votos/{idPauta}")
-	public ResponseEntity<ResultadoVotosDTO> contabilizarVotos(@PathVariable("idPauta") Long idPauta) throws DesafioBackVotosException{
-		ResultadoVotosDTO resultado = pautaService.contabilizarVotos(idPauta);
+	public ResponseEntity<ResultadoVotosVO> contabilizarVotos(@PathVariable("idPauta") Long idPauta) throws DesafioBackVotosException{
+		ResultadoVotosVO resultado = pautaService.contabilizarVotos(idPauta);
 		return ResponseEntity.ok(resultado);
 	}
 

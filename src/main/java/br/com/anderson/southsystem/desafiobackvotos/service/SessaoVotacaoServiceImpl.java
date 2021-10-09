@@ -1,6 +1,6 @@
 package br.com.anderson.southsystem.desafiobackvotos.service;
 
-import static br.com.anderson.southsystem.desafiobackvotos.validations.SessaoVotacaoValidation.valida;
+import static br.com.anderson.southsystem.desafiobackvotos.validations.SessaoVotacaoBusinessValidation.valida;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

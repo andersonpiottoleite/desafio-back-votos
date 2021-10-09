@@ -2,6 +2,8 @@ package br.com.anderson.southsystem.desafiobackvotos.controller;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +37,7 @@ public class SessaoVotacaoController {
 	
 	@ApiOperation("Salva uma nova sessao de votacao")
 	@PostMapping("/abrir")
-	public ResponseEntity<SessaoVotacaoVO> abrir(@RequestBody SessaoVotacaoDTO sessaoVotacaoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
+	public ResponseEntity<SessaoVotacaoVO> abrir(@RequestBody @Valid SessaoVotacaoDTO sessaoVotacaoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		SessaoVotacao sessaoVotacao = sessaoVotacaoService.abrir(sessaoVotacaoDTO);
 		URI uri = uriBuilder.path("/sessaoVotacao/{idSessaoVotacao}").buildAndExpand(sessaoVotacao.getId()).toUri();
         return ResponseEntity.created(uri).body(new SessaoVotacaoVO(sessaoVotacao));

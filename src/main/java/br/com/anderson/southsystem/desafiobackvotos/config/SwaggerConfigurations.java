@@ -1,4 +1,4 @@
-package br.com.anderson.southsystem.desafiobackvotos.infra;
+package br.com.anderson.southsystem.desafiobackvotos.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
