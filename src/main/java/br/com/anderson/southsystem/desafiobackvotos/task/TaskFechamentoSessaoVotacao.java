@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
-import br.com.anderson.southsystem.desafiobackvotos.service.SessaoVotacaoRepository;
+import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
 
 @Component
 @EnableScheduling

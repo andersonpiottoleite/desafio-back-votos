@@ -10,6 +10,7 @@ import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosEx
 import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 import br.com.anderson.southsystem.desafiobackvotos.repository.PautaRepository;
+import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
 
 @Service
 public class SessaoVotacaoServiceImpl implements SessaoVotacaoService{

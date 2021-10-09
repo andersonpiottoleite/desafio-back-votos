@@ -25,13 +25,13 @@ public class PautaServiceImpl implements PautaService {
 
 	public ResultadoVotosDTO contabilizarVotos(Long idPauta) throws DesafioBackVotosException {
 		Pauta pauta = pautaRepository.findById(idPauta)
-				.orElseThrow(() -> new DesafioBackVotosException("Pauta não encontrada com o id: " + idPauta));
+				.orElseThrow(() -> new DesafioBackVotosException("Pauta não encontrada com o id " + idPauta));
 		validaExistenciaVotos(pauta);
 		return new ResultadoVotosDTO(pauta);
 	}
 
 	public Pauta buscar(Long idPauta) throws DesafioBackVotosException {
 		return pautaRepository.findById(idPauta)
-				.orElseThrow(() -> new DesafioBackVotosException("Pauta não encontrada com o id: " + idPauta));
+				.orElseThrow(() -> new DesafioBackVotosException("Pauta não encontrada com o id " + idPauta));
 	}
 }

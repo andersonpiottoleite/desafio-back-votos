@@ -1,4 +1,4 @@
-package br.com.anderson.southsystem.desafiobackvotos.service;
+package br.com.anderson.southsystem.desafiobackvotos.repository;
 
 import java.util.List;
 
