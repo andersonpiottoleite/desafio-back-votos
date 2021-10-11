@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -157,7 +158,10 @@ public class SessaoVotacaoServiceImplTest extends AbstractSpringBootTest {
 		Voto voto1 = new Voto(true, null, null);
 		Voto voto2 = new Voto(false, null, null);
 		Voto voto3 = new Voto(false, null, null);
-		List<Voto> votos = List.of(voto1, voto2, voto3);
+		List<Voto> votos = new ArrayList<>();
+		votos.add(voto1);
+		votos.add(voto2);
+		votos.add(voto3);
 		
 		sessaoVotacao.setVotos(votos);
 		
