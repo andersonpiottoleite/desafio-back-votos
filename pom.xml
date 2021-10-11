@@ -35,10 +35,18 @@
 		</dependency>  -->
 		
 		<dependency>
-		    <groupId>org.postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>9.4-1205-jdbc42</version>
+		  <groupId>org.postgresql</groupId>
+		  <artifactId>postgresql</artifactId>
+		  <version>42.2.1</version>
 		</dependency>
+		
+		<dependency>
+		  <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-dbcp2</artifactId>
+		  <version>${commons-dbcp2.version}</version>
+		  <scope>compile</scope>
+		</dependency>
+		
 		
 		<!-- Test -->
 		<dependency>
