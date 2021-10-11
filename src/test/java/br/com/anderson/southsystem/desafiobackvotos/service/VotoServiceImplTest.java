@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.com.anderson.southsystem.desafiobackvotos.AbstractSpringBootTest;
 import br.com.anderson.southsystem.desafiobackvotos.dto.AssociadoDTO;
 import br.com.anderson.southsystem.desafiobackvotos.dto.PautaDTO;
 import br.com.anderson.southsystem.desafiobackvotos.dto.SessaoVotacaoDTO;

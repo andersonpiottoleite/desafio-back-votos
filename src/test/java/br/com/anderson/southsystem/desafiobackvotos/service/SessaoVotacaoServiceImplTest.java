@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 
+import br.com.anderson.southsystem.desafiobackvotos.AbstractSpringBootTest;
 import br.com.anderson.southsystem.desafiobackvotos.dto.PautaDTO;
 import br.com.anderson.southsystem.desafiobackvotos.dto.SessaoVotacaoDTO;
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;

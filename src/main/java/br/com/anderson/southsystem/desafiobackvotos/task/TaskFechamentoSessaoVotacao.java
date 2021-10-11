@@ -21,6 +21,16 @@ public class TaskFechamentoSessaoVotacao {
 	@Autowired
 	private SessaoVotacaoRepository sessaoVotacaoRepository;
 	
+	public TaskFechamentoSessaoVotacao(){}
+	
+	/** Construtor para ser usado em mock de testes unitarios
+	 * 
+	 * @param sessaoVotacaoRepository
+	 */
+	public TaskFechamentoSessaoVotacao(SessaoVotacaoRepository sessaoVotacaoRepository){
+		this.sessaoVotacaoRepository = sessaoVotacaoRepository;
+	}
+	
 	/**
 	 * a cada 30 segundos, verifica se existem sessoes para encerrar
 	 */

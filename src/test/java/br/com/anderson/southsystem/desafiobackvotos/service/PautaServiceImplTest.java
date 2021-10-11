@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
+import br.com.anderson.southsystem.desafiobackvotos.AbstractSpringBootTest;
 import br.com.anderson.southsystem.desafiobackvotos.dto.PautaDTO;
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;
 import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
