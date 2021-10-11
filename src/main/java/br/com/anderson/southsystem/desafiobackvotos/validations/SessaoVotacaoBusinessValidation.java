@@ -18,7 +18,7 @@ public class SessaoVotacaoBusinessValidation {
 	
 	public static void validaExistenciaVotos(SessaoVotacao sessaoVotacao) throws DesafioBackVotosException {
 		if (sessaoVotacao.getVotos().isEmpty()) {
-			throw new DesafioBackVotosException("Pauta sem votos para serem contabilizados");
+			throw new DesafioBackVotosException("Sessao sem votos para serem contabilizados");
 		}
 	}
 

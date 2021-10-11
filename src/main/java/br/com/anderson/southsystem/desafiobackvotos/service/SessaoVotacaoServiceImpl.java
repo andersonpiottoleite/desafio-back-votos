@@ -22,6 +22,16 @@ public class SessaoVotacaoServiceImpl implements SessaoVotacaoService{
 	
 	@Autowired
 	private PautaRepository pautaRepository;
+	
+	public SessaoVotacaoServiceImpl() {}
+	
+	/** Construtor para ser usado em mock de testes unitarios
+	 * 
+	 * @param sessaoVotacaoRepository
+	 */
+	public SessaoVotacaoServiceImpl(SessaoVotacaoRepository sessaoVotacaoRepository) {
+		this.sessaoVotacaoRepository = sessaoVotacaoRepository;
+	}
 
 	public SessaoVotacao abrir(SessaoVotacaoDTO sessaoVotacaoDTO) throws DesafioBackVotosException {
 		Pauta pauta = pautaRepository.findById(sessaoVotacaoDTO.getIdPauta()).orElseThrow(() -> new DesafioBackVotosException("Pauta não encontrada com o id " + sessaoVotacaoDTO.getIdPauta()));
@@ -39,7 +49,7 @@ public class SessaoVotacaoServiceImpl implements SessaoVotacaoService{
 		return new ResultadoVotosVO(sessaoVotacao);
 	}
 	
-	private SessaoVotacao getSessaoVotacao(Long idSessaoVotacao) throws DesafioBackVotosException {
+	public SessaoVotacao getSessaoVotacao(Long idSessaoVotacao) throws DesafioBackVotosException {
 		return sessaoVotacaoRepository.findById(idSessaoVotacao).orElseThrow(() -> new DesafioBackVotosException("SessaoVotacao não encontrada com o id " + idSessaoVotacao));
 	}
 

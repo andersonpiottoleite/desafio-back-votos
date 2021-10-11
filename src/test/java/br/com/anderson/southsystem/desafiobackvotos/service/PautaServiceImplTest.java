@@ -36,6 +36,4 @@ public class PautaServiceImplTest {
 		assertNotNull(pauta.getId());
 	}
 
-	// TODO, testar o outro metodo de contabilizar votos que existe com o mockito
-
 }
