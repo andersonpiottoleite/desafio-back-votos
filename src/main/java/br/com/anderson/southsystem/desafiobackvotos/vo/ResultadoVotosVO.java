@@ -6,6 +6,8 @@ public class ResultadoVotosVO {
 
 	private Long idSessao;
 	
+	private boolean encerrada;
+	
 	private PautaVO pauta;
 
 	private Long quantidadeTotalVotos;
@@ -19,6 +21,7 @@ public class ResultadoVotosVO {
 
 	public ResultadoVotosVO(SessaoVotacao sessaoVotacao) {
 		this.idSessao = sessaoVotacao.getId();
+		this.encerrada = sessaoVotacao.isEncerrada();
 		this.pauta = new PautaVO(sessaoVotacao.getPauta());
 		this.quantidadeTotalVotos = sessaoVotacao.getVotos().stream().count();
 		this.quantidadeVotosAFavor = sessaoVotacao.getVotos().stream().filter(v -> v.isVotoAFavor()).count();
@@ -27,6 +30,10 @@ public class ResultadoVotosVO {
 
 	public Long getIdSessao() {
 		return idSessao;
+	}
+	
+	public boolean isEncerrada() {
+		return encerrada;
 	}
 	
 	public PautaVO getPauta() {

@@ -10,7 +10,7 @@ import br.com.anderson.southsystem.desafiobackvotos.model.Voto;
 
 public class SessaoVotacaoVO {
 
-	private Long id;
+	private Long idSessao;
 	
 	private LocalDateTime dataEncerramento;
 	
@@ -21,14 +21,23 @@ public class SessaoVotacaoVO {
 	private List<VotoVO> votos;
 
 	public SessaoVotacaoVO(SessaoVotacao sessaoVotacao) {
-		this.id = sessaoVotacao.getId();
+		this.idSessao = sessaoVotacao.getId();
 		this.dataEncerramento = sessaoVotacao.getDataEncerramento();
 		this.encerrada = sessaoVotacao.isEncerrada();
 		this.pauta = new PautaVO(sessaoVotacao.getPauta());
+		
+		if(Objects.nonNull(sessaoVotacao.getVotos()) && !sessaoVotacao.getVotos().isEmpty()) {
+			List<VotoVO> votosVO = sessaoVotacao.getVotos().stream().map( v -> {
+				VotoVO votoVo = new VotoVO(v);
+				return votoVo;
+			}).collect(Collectors.toList());
+			
+			this.votos = votosVO;
+		}
 	}
 
 	public SessaoVotacaoVO(Voto voto) {
-		this.id = voto.getSessaoVotacao().getId();
+		this.idSessao = voto.getSessaoVotacao().getId();
 		this.dataEncerramento = voto.getSessaoVotacao().getDataEncerramento();
 		this.encerrada = voto.getSessaoVotacao().isEncerrada();
 		this.pauta = new PautaVO(voto.getSessaoVotacao().getPauta());
@@ -43,8 +52,8 @@ public class SessaoVotacaoVO {
 		}
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdSessao() {
+		return idSessao;
 	}
 	
 	public LocalDateTime getDataEncerramento() {

@@ -44,17 +44,17 @@ public class SessaoVotacaoController {
         return ResponseEntity.created(uri).body(new SessaoVotacaoVO(sessaoVotacao));
 	}
 	
-	@ApiOperation("Busca uma sessao pelo id")
+	@ApiOperation("Busca uma sessao de votacao pelo id")
 	@GetMapping("/{idSessaoVotacao}")
 	public ResponseEntity<SessaoVotacaoVO> buscar(@PathVariable("idSessaoVotacao") Long idSessaoVotacao) throws DesafioBackVotosException{
 		SessaoVotacao sessaoVotacao = sessaoVotacaoService.buscar(idSessaoVotacao);
 		return ResponseEntity.ok(new SessaoVotacaoVO(sessaoVotacao));
 	}
 	
-	@ApiOperation("Contabilizar os votos de uma pauta")
-	@GetMapping("/contabilizar-votos/{idPauta}")
-	public ResponseEntity<ResultadoVotosVO> contabilizarVotos(@PathVariable("idPauta") Long idPauta) throws DesafioBackVotosException{
-		ResultadoVotosVO resultado = sessaoVotacaoService.contabilizarVotos(idPauta);
+	@ApiOperation("Contabilizar os votos de uma sessao de votacao")
+	@GetMapping("/contabilizar-votos/{idSessaoVotacao}")
+	public ResponseEntity<ResultadoVotosVO> contabilizarVotos(@PathVariable("idSessaoVotacao") Long idSessaoVotacao) throws DesafioBackVotosException{
+		ResultadoVotosVO resultado = sessaoVotacaoService.contabilizarVotos(idSessaoVotacao);
 		return ResponseEntity.ok(resultado);
 	}
 
