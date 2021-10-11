@@ -10,6 +10,13 @@ import br.com.anderson.southsystem.desafiobackvotos.dto.SessaoVotacaoDTO;
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 
+/** Classe de validação de regras de negócio da <code>SessaoVotacao</code>
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 public class SessaoVotacaoBusinessValidation {
 	
 	private static final Logger log = LoggerFactory.getLogger(SessaoVotacaoBusinessValidation.class);

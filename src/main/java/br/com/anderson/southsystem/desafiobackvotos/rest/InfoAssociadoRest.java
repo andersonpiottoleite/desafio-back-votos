@@ -8,6 +8,13 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.anderson.southsystem.desafiobackvotos.vo.AssociadoPossibilidadeVotacaoVO;
 
+/** Classe que faz a integração com um serviço de associados, que expoe se é permitido que o associado vote
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Component
 public class InfoAssociadoRest {
 	

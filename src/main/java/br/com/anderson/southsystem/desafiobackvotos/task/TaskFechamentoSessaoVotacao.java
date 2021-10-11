@@ -12,6 +12,13 @@ import org.springframework.stereotype.Component;
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
 
+/** Classe que representa uma task, que realiza o encerramento da <code>SessaoVotacao</code>, caso a data da encerramento tenha chegado
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Component
 @EnableScheduling
 public class TaskFechamentoSessaoVotacao {

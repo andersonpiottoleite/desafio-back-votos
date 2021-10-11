@@ -14,6 +14,13 @@ import br.com.anderson.southsystem.desafiobackvotos.repository.PautaRepository;
 import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
 import br.com.anderson.southsystem.desafiobackvotos.vo.ResultadoVotosVO;
 
+/** Classe que implementa o contrato <code> SessaoVotacaoService</code>
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Service
 public class SessaoVotacaoServiceImpl implements SessaoVotacaoService{
 	

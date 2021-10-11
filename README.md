@@ -1,3 +1,17 @@
+# Rodar o projeto:
+* 1 - Executar "mvn clean install", na pasta onde o projeto foi baixado
+
+* Obs: Se ocorrer o erro: VotoServiceImplTest.deveriaSalvarUmVoto:76 » DesafioBackVotos O Associado de c...     
+Rode novamente o build, pois se trata do serviço de permitir voto do associado, as vezes autoriza, as vezes não.
+
+* 2 - Ir até a pasta onde foi gerado o artefato e executar: "java -jar desafiobackvotos-0.0.1-SNAPSHOT.jar"
+
+# Swagger:
+http://localhost:8080/southsystem-desafio-voto/swagger-ui.html#
+
+# Actuator:
+http://localhost:8080/southsystem-desafio-voto/actuator
+
 # Desafio Técnico
 ## Objetivo
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em assembleias, por votação. A partir disso, você precisa criar uma solução back-end para gerenciar essas sessões de votação. Essa solução deve ser executada na nuvem e promover as seguintes funcionalidades através de uma API REST:

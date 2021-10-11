@@ -8,6 +8,13 @@ import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosEx
 import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
 import br.com.anderson.southsystem.desafiobackvotos.repository.PautaRepository;
 
+/** Classe que implementa o contrato <code>PautaService</code>
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Service
 public class PautaServiceImpl implements PautaService {
 	

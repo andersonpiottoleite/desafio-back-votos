@@ -17,6 +17,13 @@ import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepo
 import br.com.anderson.southsystem.desafiobackvotos.repository.VotoRepository;
 import br.com.anderson.southsystem.desafiobackvotos.validations.VotoBusinessValidation;
 
+/** Classe que implementa o contrato <code>VotoService</code>
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Service
 public class VotoServiceImpl implements VotoService {
 	

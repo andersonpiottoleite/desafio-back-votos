@@ -19,7 +19,6 @@ import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosEx
 import br.com.anderson.southsystem.desafiobackvotos.model.Voto;
 import br.com.anderson.southsystem.desafiobackvotos.service.VotoServiceImpl;
 import br.com.anderson.southsystem.desafiobackvotos.vo.SessaoVotacaoVO;
-import br.com.anderson.southsystem.desafiobackvotos.vo.VotoVO;
 import io.swagger.annotations.ApiOperation;
 
 /** Classe que representa um controller para tratar informações de <code>Voto</code>

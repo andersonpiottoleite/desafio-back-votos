@@ -8,6 +8,13 @@ import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosEx
 import br.com.anderson.southsystem.desafiobackvotos.model.Associado;
 import br.com.anderson.southsystem.desafiobackvotos.repository.AssociadoRepository;
 
+/** Classe que implementa o contrato <code>AssociadoService</code>
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Service
 public class AssociadoServiceImpl implements AssociadoService{
 	

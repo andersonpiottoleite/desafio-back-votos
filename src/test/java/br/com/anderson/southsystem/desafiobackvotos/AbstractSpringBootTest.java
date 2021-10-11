@@ -1,6 +1,7 @@
 package br.com.anderson.southsystem.desafiobackvotos;
 
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
  * Classe abstrata para ser usada em testes
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 
 @SpringBootTest
+@ActiveProfiles("default")
 public abstract class AbstractSpringBootTest {
 
 }

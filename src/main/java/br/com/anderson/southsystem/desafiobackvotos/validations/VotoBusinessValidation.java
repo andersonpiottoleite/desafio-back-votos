@@ -15,6 +15,13 @@ import br.com.anderson.southsystem.desafiobackvotos.model.Voto;
 import br.com.anderson.southsystem.desafiobackvotos.rest.InfoAssociadoRest;
 import br.com.anderson.southsystem.desafiobackvotos.vo.AssociadoPossibilidadeVotacaoVO;
 
+/** Classe de validação de regras de negócio do <code>Voto</code>
+ * 
+ * @author Anderson Piotto
+ * @since 09/10/2021
+ * @version 1.0.0
+ */
+
 @Component
 public class VotoBusinessValidation {
 	
