@@ -46,6 +46,10 @@ public class TaskFechamentoSessaoVotacao {
 		log.info("Buscando sessoes para encerrar");
 		List<SessaoVotacao> sessoesParaEncerrar = sessaoVotacaoRepository.findSessoesParaEncerrar();
 		
+		if (sessoesParaEncerrar.isEmpty()) {
+			return;
+		}
+		
 		sessoesParaEncerrar.forEach(s -> {
 			log.info("Encerrando sessao de id " + s.getId() + " cuja data de encerramento é " + s.getDataEncerramento());
 			s.encerra();
