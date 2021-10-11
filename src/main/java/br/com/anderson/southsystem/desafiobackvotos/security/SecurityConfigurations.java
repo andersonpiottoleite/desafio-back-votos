@@ -20,8 +20,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf()
         .disable().authorizeRequests()
-		.antMatchers("/**").permitAll()
-		.antMatchers("/southsystem-desafio-voto/**").permitAll();
+		.antMatchers("/**").permitAll();
 	}
 	
 	@Override
