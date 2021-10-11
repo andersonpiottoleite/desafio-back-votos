@@ -33,8 +33,7 @@ import br.com.anderson.southsystem.desafiobackvotos.vo.ResultadoVotosVO;
  * @version 1.0.0
  */
 
-@SpringBootTest
-public class SessaoVotacaoServiceImplTest {
+public class SessaoVotacaoServiceImplTest extends AbstractSpringBootTest {
 
 	@Autowired
 	private SessaoVotacaoServiceImpl sessaoVotacaoService;

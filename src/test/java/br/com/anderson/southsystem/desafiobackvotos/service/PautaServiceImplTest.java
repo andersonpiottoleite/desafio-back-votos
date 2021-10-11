@@ -20,8 +20,7 @@ import br.com.anderson.southsystem.desafiobackvotos.repository.PautaRepository;
  * @version 1.0.0
  */
 
-@SpringBootTest
-public class PautaServiceImplTest {
+public class PautaServiceImplTest extends AbstractSpringBootTest {
 
 	@Autowired
 	private PautaServiceImpl pautaService;

@@ -3,7 +3,6 @@ package br.com.anderson.southsystem.desafiobackvotos.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.anderson.southsystem.desafiobackvotos.dto.AssociadoDTO;
 import br.com.anderson.southsystem.desafiobackvotos.model.Associado;
@@ -16,8 +15,7 @@ import br.com.anderson.southsystem.desafiobackvotos.model.Associado;
  * @version 1.0.0
  */
 
-@SpringBootTest
-public class AssociadoServiceImplTest {
+public class AssociadoServiceImplTest extends AbstractSpringBootTest {
 	
 	@Autowired
 	private AssociadoServiceImpl associadoService;

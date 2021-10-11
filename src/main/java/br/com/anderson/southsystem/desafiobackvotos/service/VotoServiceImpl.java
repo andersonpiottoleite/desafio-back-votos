@@ -1,6 +1,5 @@
 package br.com.anderson.southsystem.desafiobackvotos.service;
 
-import static br.com.anderson.southsystem.desafiobackvotos.validations.VotoBusinessValidation.validaAssociadoPodeVotar;
 import static br.com.anderson.southsystem.desafiobackvotos.validations.VotoBusinessValidation.validaSeAssociadoJaVotou;
 import static br.com.anderson.southsystem.desafiobackvotos.validations.VotoBusinessValidation.validaSessaoAberta;
 
@@ -16,20 +15,37 @@ import br.com.anderson.southsystem.desafiobackvotos.model.Voto;
 import br.com.anderson.southsystem.desafiobackvotos.repository.AssociadoRepository;
 import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
 import br.com.anderson.southsystem.desafiobackvotos.repository.VotoRepository;
+import br.com.anderson.southsystem.desafiobackvotos.validations.VotoBusinessValidation;
 
 @Service
 public class VotoServiceImpl implements VotoService {
 	
 	@Autowired
 	private VotoRepository votoRepository;
-	
 
 	@Autowired
 	private SessaoVotacaoRepository sessaoVotacaoRepository;
-	
 
 	@Autowired
 	private AssociadoRepository associadoRepository;
+	
+	@Autowired
+	private VotoBusinessValidation votoBusinessValidation;
+	
+	public VotoServiceImpl() {}
+	
+	/** Construtor para ser usado em mock de testes unitarios
+	 * 
+	 * @param sessaoVotacaoRepository
+	 * @param associadoRepository
+	 * @param votoBusinessValidation
+	 */
+	public VotoServiceImpl(SessaoVotacaoRepository sessaoVotacaoRepository, AssociadoRepository associadoRepository, VotoBusinessValidation votoBusinessValidation) {
+		this.sessaoVotacaoRepository = sessaoVotacaoRepository;
+		this.associadoRepository = associadoRepository;
+		this.votoBusinessValidation = votoBusinessValidation;
+		
+	}
 
 	@Transactional
 	public Voto salvar(VotoDTO votoDTO) throws DesafioBackVotosException {
@@ -42,7 +58,8 @@ public class VotoServiceImpl implements VotoService {
 				.orElseThrow(() -> new DesafioBackVotosException("Associado nao encontrado com o id " + votoDTO.getIdAssociado()));
 		
 		validaSeAssociadoJaVotou(sessaoVotacao, associado);
-		validaAssociadoPodeVotar(associado.getCpf());
+		votoBusinessValidation.validaAssociadoPodeVotar(associado.getCpf());
+		
 		Voto voto = new Voto(votoDTO.getOpcaoVoto().isVotoAFavor(), associado, sessaoVotacao);
 		sessaoVotacao.getVotos().add(voto);
 		
