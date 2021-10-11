@@ -40,7 +40,7 @@ public class VotoBusinessValidation {
 	}
 	
 	public static void validaSeAssociadoJaVotou(SessaoVotacao sessaoVotacao, Associado associado) throws DesafioBackVotosException {
-		Optional<Voto> voto = sessaoVotacao.getPauta().getVotos().stream()
+		Optional<Voto> voto = sessaoVotacao.getVotos().stream()
 		.filter(v -> v.getAssociado().getId().equals(associado.getId())).findAny();
 		if(voto.isPresent()) {
 			throw new DesafioBackVotosException("O associado de id " + associado.getId() + " já votou para essa pauta!");

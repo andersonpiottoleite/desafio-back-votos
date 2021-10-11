@@ -1,15 +1,17 @@
 package br.com.anderson.southsystem.desafiobackvotos.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class SessaoVotacao {
@@ -23,10 +25,13 @@ public class SessaoVotacao {
 	 */
 	private LocalDateTime dataEncerramento = LocalDateTime.now().plusMinutes(1);
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Pauta pauta;
 	
 	private boolean encerrada = false;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Voto> votos;
 
 	public SessaoVotacao() {}
 
@@ -56,11 +61,6 @@ public class SessaoVotacao {
 	public void setPauta(Pauta pauta) {
 		this.pauta = pauta;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(dataEncerramento, id, pauta);
-	}
 	
 	public boolean isEncerrada() {
 		return encerrada;
@@ -68,6 +68,22 @@ public class SessaoVotacao {
 
 	public void encerra() {
 		this.encerrada = true;
+	}
+
+	public List<Voto> getVotos() {
+		if(Objects.isNull(votos)) {
+			votos = new ArrayList<Voto>();
+		}
+		return votos;
+	}
+
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dataEncerramento, encerrada, id, pauta, votos);
 	}
 
 	@Override
@@ -79,7 +95,9 @@ public class SessaoVotacao {
 		if (getClass() != obj.getClass())
 			return false;
 		SessaoVotacao other = (SessaoVotacao) obj;
-		return Objects.equals(dataEncerramento, other.dataEncerramento) && Objects.equals(id, other.id)
-				&& Objects.equals(pauta, other.pauta);
+		return Objects.equals(dataEncerramento, other.dataEncerramento) && encerrada == other.encerrada
+				&& Objects.equals(id, other.id) && Objects.equals(pauta, other.pauta)
+				&& Objects.equals(votos, other.votos);
 	}
+	
 }

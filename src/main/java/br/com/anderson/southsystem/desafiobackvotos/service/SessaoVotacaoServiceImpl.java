@@ -1,6 +1,7 @@
 package br.com.anderson.southsystem.desafiobackvotos.service;
 
 import static br.com.anderson.southsystem.desafiobackvotos.validations.SessaoVotacaoBusinessValidation.valida;
+import static br.com.anderson.southsystem.desafiobackvotos.validations.SessaoVotacaoBusinessValidation.validaExistenciaVotos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 import br.com.anderson.southsystem.desafiobackvotos.repository.PautaRepository;
 import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
+import br.com.anderson.southsystem.desafiobackvotos.vo.ResultadoVotosVO;
 
 @Service
 public class SessaoVotacaoServiceImpl implements SessaoVotacaoService{
@@ -28,6 +30,16 @@ public class SessaoVotacaoServiceImpl implements SessaoVotacaoService{
 	}
 
 	public SessaoVotacao buscar(Long idSessaoVotacao) throws DesafioBackVotosException {
+		return getSessaoVotacao(idSessaoVotacao);
+	}
+	
+	public ResultadoVotosVO contabilizarVotos(Long idSessaoVotacao) throws DesafioBackVotosException {
+		SessaoVotacao sessaoVotacao = getSessaoVotacao(idSessaoVotacao);
+		validaExistenciaVotos(sessaoVotacao);
+		return new ResultadoVotosVO(sessaoVotacao);
+	}
+	
+	private SessaoVotacao getSessaoVotacao(Long idSessaoVotacao) throws DesafioBackVotosException {
 		return sessaoVotacaoRepository.findById(idSessaoVotacao).orElseThrow(() -> new DesafioBackVotosException("SessaoVotacao não encontrada com o id " + idSessaoVotacao));
 	}
 

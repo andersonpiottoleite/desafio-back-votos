@@ -2,6 +2,7 @@ package br.com.anderson.southsystem.desafiobackvotos.model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Voto {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Associado associado;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private SessaoVotacao sessaoVotacao;
 	
 	public Voto(boolean votoAFavor, Associado associado,SessaoVotacao sessaoVotacao) {

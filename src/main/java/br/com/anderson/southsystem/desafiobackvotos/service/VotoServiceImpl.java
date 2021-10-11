@@ -44,7 +44,7 @@ public class VotoServiceImpl implements VotoService {
 		validaSeAssociadoJaVotou(sessaoVotacao, associado);
 		validaAssociadoPodeVotar(associado.getCpf());
 		Voto voto = new Voto(votoDTO.getOpcaoVoto().isVotoAFavor(), associado, sessaoVotacao);
-		sessaoVotacao.getPauta().getVotos().add(voto);
+		sessaoVotacao.getVotos().add(voto);
 		
 		return votoRepository.save(voto);
 	}

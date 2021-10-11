@@ -1,15 +1,11 @@
 package br.com.anderson.southsystem.desafiobackvotos.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Pauta {
@@ -19,9 +15,6 @@ public class Pauta {
 	private Long id;
 	
 	private String descricao;
-	
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Voto> votos;
 	
 	public Pauta(String descricao) {
 		this.setDescricao(descricao);
@@ -41,20 +34,9 @@ public class Pauta {
 		this.descricao = descricao;
 	}
 
-	public List<Voto> getVotos() {
-		if(Objects.isNull(this.votos)) {
-			votos = new ArrayList<Voto>();
-		}
-		return votos;
-	}
-
-	public void setVotos(List<Voto> votos) {
-		this.votos = votos;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(descricao, id, votos);
+		return Objects.hash(descricao, id);
 	}
 
 	@Override
@@ -66,7 +48,6 @@ public class Pauta {
 		if (getClass() != obj.getClass())
 			return false;
 		Pauta other = (Pauta) obj;
-		return Objects.equals(descricao, other.descricao) && Objects.equals(id, other.id)
-				&& Objects.equals(votos, other.votos);
+		return Objects.equals(descricao, other.descricao) && Objects.equals(id, other.id);
 	}
 }

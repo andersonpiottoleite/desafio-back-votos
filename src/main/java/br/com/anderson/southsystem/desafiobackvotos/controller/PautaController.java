@@ -19,7 +19,6 @@ import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosEx
 import br.com.anderson.southsystem.desafiobackvotos.model.Pauta;
 import br.com.anderson.southsystem.desafiobackvotos.service.PautaServiceImpl;
 import br.com.anderson.southsystem.desafiobackvotos.vo.PautaVO;
-import br.com.anderson.southsystem.desafiobackvotos.vo.ResultadoVotosVO;
 import io.swagger.annotations.ApiOperation;
 
 /** Classe que representa um controller para tratar informações de <code>Pauta</code>
@@ -50,12 +49,4 @@ public class PautaController {
 		Pauta pauta = pautaService.buscar(idPauta);
 		return ResponseEntity.ok(new PautaVO(pauta));
 	}
-	
-	@ApiOperation("Contabilizar os votos de uma pauta")
-	@GetMapping("/contabilizar-votos/{idPauta}")
-	public ResponseEntity<ResultadoVotosVO> contabilizarVotos(@PathVariable("idPauta") Long idPauta) throws DesafioBackVotosException{
-		ResultadoVotosVO resultado = pautaService.contabilizarVotos(idPauta);
-		return ResponseEntity.ok(resultado);
-	}
-
 }

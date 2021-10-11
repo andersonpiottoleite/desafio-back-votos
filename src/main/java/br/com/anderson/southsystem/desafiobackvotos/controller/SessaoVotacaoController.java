@@ -18,6 +18,7 @@ import br.com.anderson.southsystem.desafiobackvotos.dto.SessaoVotacaoDTO;
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 import br.com.anderson.southsystem.desafiobackvotos.service.SessaoVotacaoServiceImpl;
+import br.com.anderson.southsystem.desafiobackvotos.vo.ResultadoVotosVO;
 import br.com.anderson.southsystem.desafiobackvotos.vo.SessaoVotacaoVO;
 import io.swagger.annotations.ApiOperation;
 
@@ -49,5 +50,13 @@ public class SessaoVotacaoController {
 		SessaoVotacao sessaoVotacao = sessaoVotacaoService.buscar(idSessaoVotacao);
 		return ResponseEntity.ok(new SessaoVotacaoVO(sessaoVotacao));
 	}
+	
+	@ApiOperation("Contabilizar os votos de uma pauta")
+	@GetMapping("/contabilizar-votos/{idPauta}")
+	public ResponseEntity<ResultadoVotosVO> contabilizarVotos(@PathVariable("idPauta") Long idPauta) throws DesafioBackVotosException{
+		ResultadoVotosVO resultado = sessaoVotacaoService.contabilizarVotos(idPauta);
+		return ResponseEntity.ok(resultado);
+	}
+
 
 }
