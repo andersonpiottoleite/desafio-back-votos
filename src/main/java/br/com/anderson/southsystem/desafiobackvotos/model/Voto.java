@@ -3,6 +3,7 @@ package br.com.anderson.southsystem.desafiobackvotos.model;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,18 +18,22 @@ public class Voto {
 	
 	private boolean votoAFavor;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Associado associado;
 	
-	@ManyToOne
-	private Pauta pauta;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private SessaoVotacao sessaoVotacao;
 	
-	public Voto(boolean votoAFavor, Associado associado, Pauta pauta) {
+	public Voto(boolean votoAFavor, Associado associado,SessaoVotacao sessaoVotacao) {
 		this.votoAFavor = votoAFavor;
 		this.associado = associado;
-		this.pauta = pauta;
+		this.sessaoVotacao = sessaoVotacao;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
 	public Voto() {}
 
 	public boolean isVotoAFavor() {
@@ -47,17 +52,17 @@ public class Voto {
 		this.associado = associado;
 	}
 
-	public Pauta getPauta() {
-		return pauta;
+	public SessaoVotacao getSessaoVotacao() {
+		return sessaoVotacao;
 	}
 
-	public void setPauta(Pauta pauta) {
-		this.pauta = pauta;
+	public void setSessaoVotacao(SessaoVotacao sessaoVotacao) {
+		this.sessaoVotacao = sessaoVotacao;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(associado, id, pauta, votoAFavor);
+		return Objects.hash(associado, id, sessaoVotacao, votoAFavor);
 	}
 
 	@Override
@@ -70,6 +75,6 @@ public class Voto {
 			return false;
 		Voto other = (Voto) obj;
 		return Objects.equals(associado, other.associado) && Objects.equals(id, other.id)
-				&& Objects.equals(pauta, other.pauta) && votoAFavor == other.votoAFavor;
+				&& Objects.equals(sessaoVotacao, other.sessaoVotacao) && votoAFavor == other.votoAFavor;
 	}
 }

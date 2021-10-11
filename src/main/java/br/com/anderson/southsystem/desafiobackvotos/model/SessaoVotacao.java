@@ -3,7 +3,9 @@ package br.com.anderson.southsystem.desafiobackvotos.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +23,7 @@ public class SessaoVotacao {
 	 */
 	private LocalDateTime dataEncerramento = LocalDateTime.now().plusMinutes(1);
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Pauta pauta;
 	
 	private boolean encerrada = false;

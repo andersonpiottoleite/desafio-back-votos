@@ -9,7 +9,7 @@ import br.com.anderson.southsystem.desafiobackvotos.model.Associado;
 import br.com.anderson.southsystem.desafiobackvotos.repository.AssociadoRepository;
 
 @Service
-public class AssociadoServiceImpl {
+public class AssociadoServiceImpl implements AssociadoService{
 	
 	@Autowired
 	private AssociadoRepository associadoRepository;

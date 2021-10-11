@@ -1,9 +1,11 @@
 package br.com.anderson.southsystem.desafiobackvotos.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +20,7 @@ public class Pauta {
 	
 	private String descricao;
 	
-	@OneToMany(mappedBy = "pauta")
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Voto> votos;
 	
 	public Pauta(String descricao) {
@@ -40,6 +42,9 @@ public class Pauta {
 	}
 
 	public List<Voto> getVotos() {
+		if(Objects.isNull(this.votos)) {
+			votos = new ArrayList<Voto>();
+		}
 		return votos;
 	}
 

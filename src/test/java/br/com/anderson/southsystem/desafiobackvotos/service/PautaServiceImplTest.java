@@ -1,7 +1,6 @@
 package br.com.anderson.southsystem.desafiobackvotos.service;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -35,15 +34,6 @@ public class PautaServiceImplTest {
 		PautaDTO pautaDTO = new PautaDTO("Devemos ter voto Impresso nas Eleições 2022?");
 		Pauta pauta = pautaService.salvar(pautaDTO);
 		assertNotNull(pauta.getId());
-	}
-
-	@Test
-	void naoDeveriaSalvarUmaPautaComDescricaoVazia() throws DesafioBackVotosException {
-		PautaDTO pautaDTO = new PautaDTO("");
-		assertThrows(DesafioBackVotosException.class, () -> {
-			pautaService.salvar(pautaDTO);
-		}, 
-		"A descrição da Pauta não pode ser nula ou vazia");
 	}
 
 	// TODO, testar o outro metodo de contabilizar votos que existe com o mockito
