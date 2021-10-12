@@ -1,16 +1,10 @@
-# Rodar o projeto:
-* 1 - Executar "mvn clean install", na pasta onde o projeto foi baixado
-
-* Obs: Se ocorrer o erro: VotoServiceImplTest.deveriaSalvarUmVoto:76 » DesafioBackVotos O Associado de c...     
-Rode novamente o build, pois se trata do serviço de permitir voto do associado, as vezes autoriza, as vezes não.
-
-* 2 - Ir até a pasta onde foi gerado o artefato e executar: "java -jar desafiobackvotos-0.0.1-SNAPSHOT.jar"
+# Projeto rodando no Heroku
 
 # Swagger:
-http://localhost:8080/southsystem-desafio-voto/swagger-ui.html#
+https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/swagger-ui.html
 
 # Actuator:
-http://localhost:8080/southsystem-desafio-voto/actuator
+https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/actuator
 
 # Desafio Técnico
 ## Objetivo
