@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import br.com.anderson.southsystem.desafiobackvotos.exception.DesafioBackVotosException;
-import br.com.anderson.southsystem.desafiobackvotos.message.ProducerMessageImpl;
 import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
 import br.com.anderson.southsystem.desafiobackvotos.service.SessaoVotacaoServiceImpl;
@@ -53,7 +51,6 @@ public class TaskFechamentoSessaoVotacao {
 	/**
 	 * a cada 30 segundos, verifica se existem sessoes para encerrar
 	 */
-	@Transactional
 	@Scheduled(fixedDelay = 30000)
     public void currentTimeJOBScheduler() {
 		log.info("Buscando sessoes para encerrar");

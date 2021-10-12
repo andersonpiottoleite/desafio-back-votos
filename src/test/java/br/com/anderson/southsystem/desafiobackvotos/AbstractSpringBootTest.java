@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
  */
 
 @SpringBootTest
-@ActiveProfiles("default")
+@ActiveProfiles("test")
 public abstract class AbstractSpringBootTest {
 
 }
