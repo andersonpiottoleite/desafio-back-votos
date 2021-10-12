@@ -29,28 +29,24 @@ import io.swagger.annotations.ApiOperation;
  */
 
 @RestController
-@RequestMapping("/voto")
+@RequestMapping("/v1/voto")
 public class VotoController {
 	
 	@Autowired
 	private VotoServiceImpl votoService;
 	
 	@ApiOperation("Salva um novo voto")
-	@PostMapping("/salvar")
-	//public ResponseEntity<VotoVO> salvar(@RequestBody @Valid VotoDTO votoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
+	@PostMapping
 	public ResponseEntity<SessaoVotacaoVO> salvar(@RequestBody @Valid VotoDTO votoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		Voto voto = votoService.salvar(votoDTO);
-		URI uri = uriBuilder.path("/associado/{idAssociado}").buildAndExpand(voto.getId()).toUri();
-        //return ResponseEntity.created(uri).body(new VotoVO(voto));
+		URI uri = uriBuilder.path("/v1/associado/{idAssociado}").buildAndExpand(voto.getId()).toUri();
 		return ResponseEntity.created(uri).body(new SessaoVotacaoVO(voto));
 	}
 	
 	@ApiOperation("Busca um voto pelo id")
 	@GetMapping("/{idVoto}")
-	//public ResponseEntity<VotoVO> buscar(@PathVariable("idVoto") Long idVoto) throws DesafioBackVotosException{
 	public ResponseEntity<SessaoVotacaoVO> buscar(@PathVariable("idVoto") Long idVoto) throws DesafioBackVotosException{
 		Voto voto = votoService.buscar(idVoto);
-		//return ResponseEntity.ok(new VotoVO(voto));
 		return ResponseEntity.ok(new SessaoVotacaoVO(voto));
 	}
 

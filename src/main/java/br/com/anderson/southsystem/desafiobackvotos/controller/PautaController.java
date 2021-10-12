@@ -29,17 +29,17 @@ import io.swagger.annotations.ApiOperation;
  */
 
 @RestController
-@RequestMapping("/pauta")
+@RequestMapping("/v1/pauta")
 public class PautaController {
 	
 	@Autowired
 	private PautaServiceImpl pautaService;
 	
 	@ApiOperation("Salva uma nova pauta")
-	@PostMapping("/salvar")
+	@PostMapping
 	public ResponseEntity<PautaVO> salvar(@RequestBody @Valid PautaDTO pautaDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		Pauta pauta = pautaService.salvar(pautaDTO);
-		URI uri = uriBuilder.path("/pauta/{idPauta}").buildAndExpand(pauta.getId()).toUri();
+		URI uri = uriBuilder.path("/v1/pauta/{idPauta}").buildAndExpand(pauta.getId()).toUri();
         return ResponseEntity.created(uri).body(new PautaVO(pauta));
 	}
 	

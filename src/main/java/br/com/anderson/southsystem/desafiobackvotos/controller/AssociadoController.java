@@ -29,17 +29,17 @@ import io.swagger.annotations.ApiOperation;
  */
 
 @RestController
-@RequestMapping("/associado")
+@RequestMapping("/v1/associado")
 public class AssociadoController {
 	
 	@Autowired
 	private AssociadoServiceImpl associadoService;
 	
 	@ApiOperation("Salva um novo associado")
-	@PostMapping("/salvar")
+	@PostMapping
 	public ResponseEntity<AssociadoVO> salvar(@RequestBody @Valid AssociadoDTO associadoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		Associado associado = associadoService.salvar(associadoDTO);
-		URI uri = uriBuilder.path("/associado/{idAssociado}").buildAndExpand(associado.getId()).toUri();
+		URI uri = uriBuilder.path("/v1/associado/{idAssociado}").buildAndExpand(associado.getId()).toUri();
         return ResponseEntity.created(uri).body(new AssociadoVO(associado));
 	}
 	

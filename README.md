@@ -12,6 +12,24 @@ dando mais velocidade ao desenvolvimento.
 Optei por colocar no Heroku, pois possui complementos opcionais como postgresql, assim pude gerar 
 aderencia com a arquitetura proposta no desafio (nuvem e não perder os dados no restart da aplicação).
 
+# Tarefa Bônus 2 - Mensageria e filas
+#Classificação da informação: Uso Interno O resultado da votação precisa ser informado para o #restante da plataforma, isso deve ser feito preferencialmente através de mensageria. Quando #a sessão de votação fechar, poste uma mensagem com o resultado da votação.
+Usaria Kafka, mas não deu tempo de implementar.
+
+#Tarefa Bônus 3 - Performance
+#Imagine que sua aplicação possa ser usada em cenários que existam centenas de milhares de votos. Ela deve se comportar de maneira performática nesses cenários;
+Usaria o JMeter para testes de performance.
+
+#Tarefa Bônus 4 - Versionamento da API
+#Como você versionaria a API da sua aplicação? Que estratégia usar?
+Usei o modelo de versionamento de Path, exemplo:
+
+* https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/v1/pauta/salvar
+
+* https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/v2/pauta/salvar
+
+Creio que fica mais transparente para o cliente.
+
 # Desafio Técnico
 ## Objetivo
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em assembleias, por votação. A partir disso, você precisa criar uma solução back-end para gerenciar essas sessões de votação. Essa solução deve ser executada na nuvem e promover as seguintes funcionalidades através de uma API REST:

@@ -30,17 +30,17 @@ import io.swagger.annotations.ApiOperation;
  */
 
 @RestController
-@RequestMapping("/sessaoVotacao")
+@RequestMapping("/v1/sessaoVotacao")
 public class SessaoVotacaoController {
 	
 	@Autowired
 	private SessaoVotacaoServiceImpl sessaoVotacaoService;
 	
 	@ApiOperation("Salva uma nova sessao de votacao")
-	@PostMapping("/abrir")
+	@PostMapping
 	public ResponseEntity<SessaoVotacaoVO> abrir(@RequestBody @Valid SessaoVotacaoDTO sessaoVotacaoDTO, UriComponentsBuilder uriBuilder) throws DesafioBackVotosException{
 		SessaoVotacao sessaoVotacao = sessaoVotacaoService.abrir(sessaoVotacaoDTO);
-		URI uri = uriBuilder.path("/sessaoVotacao/{idSessaoVotacao}").buildAndExpand(sessaoVotacao.getId()).toUri();
+		URI uri = uriBuilder.path("/v1/sessaoVotacao/{idSessaoVotacao}").buildAndExpand(sessaoVotacao.getId()).toUri();
         return ResponseEntity.created(uri).body(new SessaoVotacaoVO(sessaoVotacao));
 	}
 	
