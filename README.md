@@ -6,6 +6,12 @@ https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/swagger-
 # Actuator:
 https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/actuator
 
+# Porquê das escolhas tomadas?
+Optei por desenvolver usando Stringboot, devido a abstração e facilidade para se criar APIs REST,
+dando mais velocidade ao desenvolvimento.
+Optei por colocar no Heroku, pois possui complementos opcionais como postgresql, assim pude gerar 
+aderencia com a arquitetura proposta no desafio (nuvem e não perder os dados no restart da aplicação).
+
 # Desafio Técnico
 ## Objetivo
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em assembleias, por votação. A partir disso, você precisa criar uma solução back-end para gerenciar essas sessões de votação. Essa solução deve ser executada na nuvem e promover as seguintes funcionalidades através de uma API REST:
