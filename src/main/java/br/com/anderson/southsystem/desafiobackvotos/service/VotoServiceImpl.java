@@ -47,10 +47,12 @@ public class VotoServiceImpl implements VotoService {
 	 * @param associadoRepository
 	 * @param votoBusinessValidation
 	 */
-	public VotoServiceImpl(SessaoVotacaoRepository sessaoVotacaoRepository, AssociadoRepository associadoRepository, VotoBusinessValidation votoBusinessValidation) {
+	public VotoServiceImpl(SessaoVotacaoRepository sessaoVotacaoRepository, AssociadoRepository associadoRepository, 
+			VotoBusinessValidation votoBusinessValidation, VotoRepository votoRepository) {
 		this.sessaoVotacaoRepository = sessaoVotacaoRepository;
 		this.associadoRepository = associadoRepository;
 		this.votoBusinessValidation = votoBusinessValidation;
+		this.votoRepository = votoRepository;
 		
 	}
 

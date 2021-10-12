@@ -12,16 +12,19 @@ dando mais velocidade ao desenvolvimento.
 Optei por colocar no Heroku, pois possui complementos opcionais como postgresql, assim pude gerar 
 aderencia com a arquitetura proposta no desafio (nuvem e não perder os dados no restart da aplicação).
 
+# Tarefa Bônus 1 - Integração com sistemas externos
+Usei RestTemplate do Spring, o serviço altera bastante, as vezes retorna que pode e não pode votar, para o mesmo cpf.
+Deve ser um Random.
+
 # Tarefa Bônus 2 - Mensageria e filas
-#Classificação da informação: Uso Interno O resultado da votação precisa ser informado para o #restante da plataforma, isso deve ser feito preferencialmente através de mensageria. Quando #a sessão de votação fechar, poste uma mensagem com o resultado da votação.
-Usaria Kafka, mas não deu tempo de implementar.
+Usei Kafka, mas não esta funcional no Heroku, pois precisa pagar para ter uma instancia do Kafka lá.
+Deixei o código comentado nos trechos onde ele é utilizado.
 
 #Tarefa Bônus 3 - Performance
-#Imagine que sua aplicação possa ser usada em cenários que existam centenas de milhares de votos. Ela deve se comportar de maneira performática nesses cenários;
-Usaria o JMeter para testes de performance.
+Usaria a interface do JMeter para testes de performance.
+Também é possivel realizar programaticamente.
 
 #Tarefa Bônus 4 - Versionamento da API
-#Como você versionaria a API da sua aplicação? Que estratégia usar?
 Usei o modelo de versionamento de Path, exemplo:
 
 * https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/v1/pauta/salvar
@@ -29,6 +32,14 @@ Usei o modelo de versionamento de Path, exemplo:
 * https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/v2/pauta/salvar
 
 Creio que fica mais transparente para o cliente.
+
+# Para rodar localmente:
+* Fazer o clone do projeto
+* executar o comando "mvn clean install" no mavem, ou somente "clean install" no maven build, do Spring Tools Suite por exemplo.
+* rodar o seguinte comando dentro da pasta target (onde será gerado o artefato do projeto): java -jar desafiobackvotos-0.0.1-SNAPSHOT.jar
+* Acessar Swagger: http://localhost:8080/southsystem-desafio-voto/swagger-ui.html#/
+* Acessar Actuator: http://localhost:8080/southsystem-desafio-voto/actuator
+
 
 # Desafio Técnico
 ## Objetivo

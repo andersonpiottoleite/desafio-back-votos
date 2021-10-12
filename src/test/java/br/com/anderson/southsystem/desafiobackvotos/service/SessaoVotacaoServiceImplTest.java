@@ -79,15 +79,15 @@ public class SessaoVotacaoServiceImplTest extends AbstractSpringBootTest {
 	
 	@Test
 	void naoDeveriaSalvarUmaSessaoVotacaoComIdPautaInexistenteOuNulo() throws DesafioBackVotosException {
-		LocalDateTime dataEncerramento = LocalDateTime.now().plusMinutes(10);
+		LocalDateTime dataEncerramento = LocalDateTime.now().plusMinutes(-1);
 		
-		SessaoVotacaoDTO sessaoVotacaoDTO = new SessaoVotacaoDTO(10L, dataEncerramento);
+		SessaoVotacaoDTO sessaoVotacaoDTO = new SessaoVotacaoDTO(-1L, dataEncerramento);
 		
 		try {
 			sessaoVotacaoService.abrir(sessaoVotacaoDTO);
 			Assertions.fail();
 		} catch (DesafioBackVotosException e) {
-			assertEquals("Pauta não encontrada com o id 10", e.getMessage());
+			assertEquals("Pauta não encontrada com o id -1", e.getMessage());
 		}
 		
 		SessaoVotacaoDTO sessaoVotacaoDTOComIdPautaNulo = new SessaoVotacaoDTO(null, dataEncerramento);

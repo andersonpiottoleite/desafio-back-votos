@@ -26,9 +26,6 @@ import br.com.anderson.southsystem.desafiobackvotos.model.SessaoVotacao;
 import br.com.anderson.southsystem.desafiobackvotos.model.Voto;
 import br.com.anderson.southsystem.desafiobackvotos.repository.AssociadoRepository;
 import br.com.anderson.southsystem.desafiobackvotos.repository.SessaoVotacaoRepository;
-import br.com.anderson.southsystem.desafiobackvotos.rest.InfoAssociadoRest;
-import br.com.anderson.southsystem.desafiobackvotos.validations.VotoBusinessValidation;
-import br.com.anderson.southsystem.desafiobackvotos.vo.AssociadoPossibilidadeVotacaoVO;
 
 /**
  * Classe de testes para <code>VotoServiceImpl</code>
@@ -100,7 +97,7 @@ public class VotoServiceImplTest extends AbstractSpringBootTest {
 		
 		VotoDTO votoDTO = new VotoDTO(null, 1L, OpcaoVotoEnum.SIM);
 		
-		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, null, null);
+		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, null, null, null);
 		
 		try {
 			votoService.salvar(votoDTO);
@@ -124,7 +121,7 @@ public class VotoServiceImplTest extends AbstractSpringBootTest {
 		// id associado inexistente
 		Long idAssociadoInexistente = 80L;
 		
-		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, associadoRepository, null);
+		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, associadoRepository, null, null);
 		
 		VotoDTO votoDTO = new VotoDTO(idAssociadoInexistente, 1L, OpcaoVotoEnum.SIM);
 		
@@ -149,7 +146,7 @@ public class VotoServiceImplTest extends AbstractSpringBootTest {
 		AssociadoRepository mockAssociadoRepository = Mockito.mock(AssociadoRepository.class);
 		Mockito.when(mockAssociadoRepository.findById(1L)).thenReturn(criaMockAssociado());
 		
-		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, mockAssociadoRepository, null);
+		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, mockAssociadoRepository, null, null);
 		
 		VotoDTO votoDTO = new VotoDTO(1L, 1L, OpcaoVotoEnum.SIM);
 		
@@ -159,36 +156,6 @@ public class VotoServiceImplTest extends AbstractSpringBootTest {
 		} catch (DesafioBackVotosException e) {
 			assertEquals("O associado de id 1 já votou para essa pauta!", e.getMessage());
 		}
-	}
-	
-	@Test
-	public void deveriaLancarUmaExceptionCasoAssociadoNaoTenhaPermissaoParaVotar() throws DesafioBackVotosException {
-		SessaoVotacaoRepository mockSessaoVotacaoRepository = Mockito.mock(SessaoVotacaoRepository.class);
-		Mockito.when(mockSessaoVotacaoRepository.findById(1L)).thenReturn(criaMockSessaoVotacaoAberta());
-		
-		AssociadoRepository mockAssociadoRepository = Mockito.mock(AssociadoRepository.class);
-		Mockito.when(mockAssociadoRepository.findById(1L)).thenReturn(criaMockAssociado());
-		
-		InfoAssociadoRest mockInfoAssociadoRest = Mockito.mock(InfoAssociadoRest.class);
-		Mockito.when(mockInfoAssociadoRest.getInfoAssociadoPossibilidadeVotacao("35461848826")).thenReturn(criaMockAssociadoPossibilidadeVotacaoVO());
-		VotoBusinessValidation votoBusinessValidation = new VotoBusinessValidation(mockInfoAssociadoRest);
-		
-		VotoServiceImpl votoService = new VotoServiceImpl(mockSessaoVotacaoRepository, mockAssociadoRepository, votoBusinessValidation);
-		
-		VotoDTO votoDTO = new VotoDTO(1L, 1L, OpcaoVotoEnum.SIM);
-		
-		try {
-			votoService.salvar(votoDTO);
-			Assertions.fail();
-		} catch (DesafioBackVotosException e) {
-			assertEquals("O Associado de cpf 35461848826, não tem permissao para votar!", e.getMessage());
-		}
-	}
-	
-	private AssociadoPossibilidadeVotacaoVO criaMockAssociadoPossibilidadeVotacaoVO() {
-		AssociadoPossibilidadeVotacaoVO associadoPossibilidadeVotacaoVO = new AssociadoPossibilidadeVotacaoVO();
-		associadoPossibilidadeVotacaoVO.setStatus("UNABLE_TO_VOTE");
-		return associadoPossibilidadeVotacaoVO;
 	}
 	
 	private Optional<Associado> criaMockAssociado() {
