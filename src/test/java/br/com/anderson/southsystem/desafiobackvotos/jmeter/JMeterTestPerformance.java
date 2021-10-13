@@ -27,10 +27,10 @@ import org.springframework.core.io.ClassPathResource;
 public class JMeterTestPerformance {
 
 	public static void main(String[] argv) throws Exception {
-		doisUsuariosRealizamCemChamadasCada();
+		cemUsuariosRealizamDuasChamadasCada();
 	}
 
-	private static void doisUsuariosRealizamCemChamadasCada() throws IOException {
+	private static void cemUsuariosRealizamDuasChamadasCada() throws IOException {
 		ClassPathResource classPathResource = new ClassPathResource("jmeter.properties");
 		JMeterUtils.loadJMeterProperties(classPathResource.getFile().getPath());
 

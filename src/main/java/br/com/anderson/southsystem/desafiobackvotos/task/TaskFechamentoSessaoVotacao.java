@@ -1,7 +1,10 @@
 package br.com.anderson.southsystem.desafiobackvotos.task;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,11 +57,15 @@ public class TaskFechamentoSessaoVotacao {
 	@Scheduled(fixedDelay = 30000)
     public void currentTimeJOBScheduler() {
 		log.info("Buscando sessoes para encerrar");
-		List<SessaoVotacao> sessoesParaEncerrar = sessaoVotacaoRepository.findSessoesParaEncerrar();
+		List<SessaoVotacao> sessoesNaoEncerradas = sessaoVotacaoRepository.findSessoesNaoEncerradas();
 		
-		if (sessoesParaEncerrar.isEmpty()) {
+		if (sessoesNaoEncerradas.isEmpty()) {
 			return;
 		}
+		
+		List<SessaoVotacao> sessoesParaEncerrar = sessoesNaoEncerradas.stream().filter(
+				s -> s.getDataEncerramento().isBefore(LocalDateTime.now()))
+				.collect(Collectors.toList());
 		
 		sessoesParaEncerrar.forEach(s -> {
 			log.info("Encerrando sessao de id " + s.getId() + " cuja data de encerramento é " + s.getDataEncerramento());

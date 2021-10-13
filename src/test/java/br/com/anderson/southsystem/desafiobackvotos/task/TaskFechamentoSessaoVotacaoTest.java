@@ -1,5 +1,6 @@
 package br.com.anderson.southsystem.desafiobackvotos.task;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class TaskFechamentoSessaoVotacaoTest extends AbstractSpringBootTest {
 	void deveriaFecharSessoesAbertasEComDataEncerramentoMenosQueAgora() throws DesafioBackVotosException {
 		SessaoVotacaoRepository mockSessaoVotacaoRepository = Mockito.mock(SessaoVotacaoRepository.class);
 		List<SessaoVotacao> listaDeSessoesParaEncerrar = criaMockListaDeSessoesParaEncerrar();
-		Mockito.when(mockSessaoVotacaoRepository.findSessoesParaEncerrar()).thenReturn(listaDeSessoesParaEncerrar);
+		Mockito.when(mockSessaoVotacaoRepository.findSessoesNaoEncerradas()).thenReturn(listaDeSessoesParaEncerrar);
 		
 		TaskFechamentoSessaoVotacao taskFechamentoSessaoVotacao = new TaskFechamentoSessaoVotacao(mockSessaoVotacaoRepository);
 		
@@ -39,7 +40,9 @@ public class TaskFechamentoSessaoVotacaoTest extends AbstractSpringBootTest {
 	private List<SessaoVotacao> criaMockListaDeSessoesParaEncerrar() {
 		List<SessaoVotacao> sessoesParaEncerrar = new ArrayList<>();
 		SessaoVotacao sessaoParaEncerrar1 = new SessaoVotacao();
+		sessaoParaEncerrar1.setDataEncerramento(LocalDateTime.now().minusMinutes(10));
 		SessaoVotacao sessaoParaEncerrar2 = new SessaoVotacao();
+		sessaoParaEncerrar2.setDataEncerramento(LocalDateTime.now().minusMinutes(10));
 		sessoesParaEncerrar.add(sessaoParaEncerrar1);
 		sessoesParaEncerrar.add(sessaoParaEncerrar2);
 		return sessoesParaEncerrar;

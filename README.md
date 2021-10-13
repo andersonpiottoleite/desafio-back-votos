@@ -15,6 +15,7 @@ mais aderencia com a arquitetura proposta no desafio (nuvem e não perder os dad
 # Tarefa Bônus 1 - Integração com sistemas externos
 Usei RestTemplate do Spring, o serviço altera bastante, as vezes retorna que pode votar, as vezes não pode votar, para o mesmo cpf.
 Creio que a causa seja uma implementação de resposta aleatória lá no serviço.
+* Nota: As vezes por conta disso é necessário mais de uma vez o teste deveriaSalvarUmVoto em VotoServiceImplTest, que espera que o cadastro do Voto seja realizado com sucesso (uma solução para o futuro seria fazer um mock do serviço, que retornasse que sempre é possivel votar).
 
 # Tarefa Bônus 2 - Mensageria e filas
 Usei Kafka, mas não esta funcional no Heroku, pois precisa pagar 100 dolares para ter uma instancia basica do Kafka lá.
