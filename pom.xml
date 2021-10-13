@@ -96,6 +96,19 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		
+		<!-- jmeter -->
+		<dependency>
+		    <groupId>org.apache.jmeter</groupId>
+		    <artifactId>ApacheJMeter_core</artifactId>
+		    <version>5.4.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.jmeter</groupId>
+		    <artifactId>ApacheJMeter_http</artifactId>
+		    <version>5.4.1</version>
+		</dependency>
+		
 		<!-- Kafka 
 		<dependency>
 		   <groupId>org.apache.kafka</groupId>

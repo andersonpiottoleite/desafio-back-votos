@@ -10,19 +10,20 @@ https://southsystem-desafio-voto.herokuapp.com/southsystem-desafio-voto/actuator
 Optei por desenvolver usando Stringboot, devido a abstração e facilidade para se criar APIs REST,
 dando mais velocidade ao desenvolvimento.
 Optei por colocar no Heroku, pois possui complementos opcionais como postgresql, assim pude gerar 
-aderencia com a arquitetura proposta no desafio (nuvem e não perder os dados no restart da aplicação).
+mais aderencia com a arquitetura proposta no desafio (nuvem e não perder os dados no restart da aplicação).
 
 # Tarefa Bônus 1 - Integração com sistemas externos
-Usei RestTemplate do Spring, o serviço altera bastante, as vezes retorna que pode e não pode votar, para o mesmo cpf.
-Deve ser um Random.
+Usei RestTemplate do Spring, o serviço altera bastante, as vezes retorna que pode votar, as vezes não pode votar, para o mesmo cpf.
+Creio que a causa seja uma implementação de resposta aleatória lá no serviço.
 
 # Tarefa Bônus 2 - Mensageria e filas
-Usei Kafka, mas não esta funcional no Heroku, pois precisa pagar para ter uma instancia do Kafka lá.
+Usei Kafka, mas não esta funcional no Heroku, pois precisa pagar 100 dolares para ter uma instancia basica do Kafka lá.
 Deixei o código comentado nos trechos onde ele é utilizado.
 
 #Tarefa Bônus 3 - Performance
-Usaria a interface do JMeter para testes de performance.
-Também é possivel realizar programaticamente.
+Usei o JMeter para criar um exemplo de teste performance, de maneira programatica direto pelo codigo fonte.
+* Veja a Classe: JMeterTestPerformance
+* Também é possivel realizar pela interface tradicional do JMeter, após realizar download e instalação.
 
 #Tarefa Bônus 4 - Versionamento da API
 Usei o modelo de versionamento de Path, exemplo:
