@@ -41,22 +41,18 @@ public class VotoBusinessValidation {
 	}
 	
 	public void validaAssociadoPodeVotar(String cpf) throws DesafioBackVotosException {
-		try {
-			AssociadoPossibilidadeVotacaoVO infoAssociadoPossibilidadeVotacao = infoAssociadoRest.getInfoAssociadoPossibilidadeVotacao(cpf);
+		AssociadoPossibilidadeVotacaoVO infoAssociadoPossibilidadeVotacao = infoAssociadoRest.getInfoAssociadoPossibilidadeVotacao(cpf);
+		
+		if(PossibilidadeVotacaoEnum.ABLE_TO_VOTE.getValue()
+				.equals(infoAssociadoPossibilidadeVotacao.getStatus())) {
 			
-			if(PossibilidadeVotacaoEnum.ABLE_TO_VOTE.getValue()
-					.equals(infoAssociadoPossibilidadeVotacao.getStatus())) {
-				
-				log.info("Usuario do cpf {} habilitado para votar", cpf);
-				
-			} else if (PossibilidadeVotacaoEnum.UNABLE_TO_VOTE.getValue()
-					.equals(infoAssociadoPossibilidadeVotacao.getStatus())) {
-				
-				log.info("O Associado de cpf "+ cpf +", não tem permissao para votar!");
-				throw new DesafioBackVotosException("O Associado de cpf "+ cpf +", não tem permissao para votar!");
-			}
-		}catch (Exception e) {
-			log.error("Ocorreu um erro na integração com o serviço de permissao de votacao: " + e.getMessage());
+			log.info("Usuario do cpf {} habilitado para votar", cpf);
+			
+		} else if (PossibilidadeVotacaoEnum.UNABLE_TO_VOTE.getValue()
+				.equals(infoAssociadoPossibilidadeVotacao.getStatus())) {
+			
+			log.info("O Associado de cpf "+ cpf +", não tem permissao para votar!");
+			throw new DesafioBackVotosException("O Associado de cpf "+ cpf +", não tem permissao para votar!");
 		}
 	}
 	
